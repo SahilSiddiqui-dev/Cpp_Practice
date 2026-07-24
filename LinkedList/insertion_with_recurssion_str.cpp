@@ -12,16 +12,12 @@ class Node {
 };
 
 Node *insertionzVal(int arr[], int size, int index, Node  *prev){
-
-    if(size == index){
-       return prev;
+    if(index == size){
+        return prev;
     }
-
-    Node *temp;
-    temp = new Node(arr[index]);
+    Node* temp = new Node(arr[index]);
     temp->next = prev;
-
-    return insertionzVal(arr,size, index + 1, temp);
+    return insertionzVal(arr, size, index + 1, temp);
 }
 
 int main(){
