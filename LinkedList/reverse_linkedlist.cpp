@@ -23,14 +23,21 @@ Node *insertionVal(int arr[], int index, int size){
 
 }
 Node* reverse(Node*curr, Node*prev){
-    if(curr == NULL ){
+    //recursive version
+    if(curr == NULL){
         return prev;
     }
-    Node* fut = curr->next;
+    Node* temp = curr->next;
     curr->next = prev;
-   
-    return reverse(fut, curr);
-   
+    curr = reverse(temp, curr);
+    // iterative approach
+//    while(curr != NULL){
+//     Node* fut = curr->next;
+//     curr->next = prev;
+//     prev = curr;
+//     curr = fut;
+//    }
+//    return prev;
 }
 int main() {
     int arr[] = {1, 2, 3, 4, 5};
