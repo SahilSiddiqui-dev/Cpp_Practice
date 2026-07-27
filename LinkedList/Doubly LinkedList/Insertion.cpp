@@ -63,6 +63,12 @@ Node* insertionAtMid(Node* head, int x){
         head = new Node(x);
         return head;
     }
+    if(head->next == NULL){
+        Node* temp = new Node(x);
+        head->next = temp;
+        temp->prev = head;
+        return head;
+    }
     Node* newNode = new Node(x);
     int cnt = 0;
     Node* tail = head;
@@ -88,14 +94,14 @@ return head;
 int main(){
     int arr[]= {1, 2, 3, 4, 5};
     Node* head = NULL;
-    head = createList(head, arr, 2);
+    head = createList(head, arr, 4);
     Node* temp = head;
     while(temp){
         cout << temp->data << " ";
         temp = temp->next;
     }
-    //head = insertionAtStr(head, 7);
-    //head = insertionAtEnd(head, 9);
+    head = insertionAtStr(head, 7);
+    head = insertionAtEnd(head, 9);
     head = insertionAtMid(head, 8);
     cout << endl;
     temp = head;
