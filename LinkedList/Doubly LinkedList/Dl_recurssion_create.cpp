@@ -39,8 +39,8 @@ return temp;
 int main(){
     int arr[]= {1, 2, 3, 4, 5};
     Node* head = NULL;
-    head = insertionAtStr(arr, 5, 0, head);
-    // head = insertionAtEnd(arr, 5, 0, NULL);
+    //head = insertionAtStr(arr, 5, 0, head);
+    head = insertionAtEnd(arr, 5, 0, NULL);
     Node* temp = head;
     while(temp){
         cout << temp->data << " ";
