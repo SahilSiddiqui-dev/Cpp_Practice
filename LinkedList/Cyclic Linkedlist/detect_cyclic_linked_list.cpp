@@ -24,20 +24,37 @@ Node* creation(int arr[], int n){
     
    return head;
 }
+bool detect_cycle(Node* head){
+    Node* slow = head;
+    Node* fast = head;
+    while(slow != NULL && fast != NULL && fast->next != NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast){
+            return 1;
+        }
+    }
+    return 0;
+}
 int main() {
 int arr[] = {1, 2, 3, 4, 5};
 Node* head = creation(arr, 5);
-Node* temp = head;
-
-unordered_map<Node*, bool>visited;
-
-while(temp != NULL){
-    if(visited[temp] == 1){
-        cout << "Cyclic Linked List" << endl;
-        return 0;
-    }
-    visited[temp] = 1;
+// unordered map appraoch
+// Node* temp = head;
+// unordered_map<Node*, bool>visited;
+// while(temp != NULL){
+//     if(visited[temp] == 1){
+//         cout << "Cyclic Linked List" << endl;
+//         return 0;
+//     }
+//     visited[temp] = 1;
+// }
+// cout << "Not a Cyclic Linked List" << endl;
+if(detect_cycle(head)){
+    cout << "Cyclic Linked List" << endl;
 }
-cout << "Not a Cyclic Linked List" << endl;
+else{
+    cout << "Not a Cyclic Linked List" << endl;
+}
 return 0;
 }
