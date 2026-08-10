@@ -43,18 +43,14 @@ public:
         return head;
     }
     ListNode* getMiddle(ListNode* head){
-        ListNode* temp = head;
-        int cnt = 0;
-        while(temp) {
-            cnt++;
-            temp = temp->next;
+       ListNode* slow = head;
+        ListNode* fast = head->next;
+        
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        cnt = cnt/2;
-        temp = head;
-        while(--cnt){
-            temp = temp->next;
-        }
-        return temp;
+        return slow;
     }
     ListNode* mergeSort(ListNode* head){
         if(!head || !head->next) return head;
