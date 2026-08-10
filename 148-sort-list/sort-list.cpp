@@ -11,36 +11,24 @@
 class Solution {
 public:
     ListNode* merge(ListNode* list1, ListNode* list2){
-        ListNode* head = new ListNode(0);
-        ListNode* curr = head;
-        ListNode* temp1 = list1;
-        ListNode* temp2 = list2;
-        while(temp1 && temp2){
-            if(temp1->val > temp2->val){
-                curr->next =  temp2;
-                curr = curr->next;
-                temp2 = temp2-> next;
+        ListNode dummy(0);
+        ListNode* curr = &dummy;
+
+        while (list1 && list2) {
+            if (list1->val <= list2->val) {
+                curr->next = list1;
+                list1 = list1->next;
+            } else {
+                curr->next = list2;
+                list2 = list2->next;
             }
-            else {
-                curr->next = temp1;
-                curr = curr->next;
-                temp1 = temp1->next;
-            }
-        }
-        while(temp1){
-            curr->next = temp1;
             curr = curr->next;
-            temp1 = temp1->next;
         }
-        while(temp2){
-            curr->next =  temp2;
-            curr = curr->next;
-            temp2 = temp2-> next;
-        }
-        ListNode* toDlt = head;
-        head = head->next;
-        delete toDlt;
-        return head;
+        
+        // 2. Attach the rest instantly in O(1) time
+        curr->next = list1 ? list1 : list2;
+
+        return dummy.next;
     }
     ListNode* getMiddle(ListNode* head){
        ListNode* slow = head;
