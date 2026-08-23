@@ -30,25 +30,23 @@ public:
     double solve(vector<int>ans){
         double x;
         int n = ans.size();
-        int m = n/2;
-        x = n%2==0 ? ((ans[m] + ans[m - 1])/2.0) : ans[m];
+        x = n%2==0 ? ((ans[n/2] + ans[(n/2) - 1])/2.0) : ans[n/2];
         return x;
     }
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         vector<int>ans;
-        double x;
         if(nums1.empty()){
-            x = solve(nums2);
-            return x;
+            return solve(nums2);
+            
         }
         if(nums2.empty()){
-            x = solve(nums1);
-            return x;
+            return solve(nums1);
+            
         }
         if(!nums1.empty() && !nums2.empty()){
             ans = merge(nums1, nums2);
-            x = solve(ans);
-            return x;
+            return solve(ans);
+            
         }
       return 0.0;
     }
