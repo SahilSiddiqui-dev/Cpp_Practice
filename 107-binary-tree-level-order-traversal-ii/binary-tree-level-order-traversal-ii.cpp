@@ -31,7 +31,13 @@ public:
 
             ans.push_back(arr);
         }
-        reverse(ans.begin(), ans.end());
+        int i = 0;
+        int j = ans.size() - 1;
+        while(i < j) {
+            swap(ans[i], ans[j]);
+            i++;
+            j--;
+        }
         return ans;
     }
 };
